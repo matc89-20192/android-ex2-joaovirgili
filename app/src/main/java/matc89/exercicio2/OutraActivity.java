@@ -19,11 +19,12 @@ public class OutraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_outra);
 
-        this.editText = findViewById(R.id.editText);
-        this.btnConfirmar = findViewById(R.id.btnConfirmar);
-        this.btnCancelar = findViewById(R.id.btnCancelar);
+        this.editText = (EditText) findViewById(R.id.editText);
+        this.btnConfirmar = (Button)findViewById(R.id.btnConfirmar);
+        this.btnCancelar = (Button)findViewById(R.id.btnCancelar);
 
-        checaPrefs();
+            checaPrefs();
+
         this.btnConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

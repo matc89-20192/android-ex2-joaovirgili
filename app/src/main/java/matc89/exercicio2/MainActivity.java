@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.label = findViewById(R.id.textView);
-        this.btnTrocar = findViewById(R.id.btnTrocar);
+        this.label = (TextView)findViewById(R.id.textView);
+        this.btnTrocar = (Button)findViewById(R.id.btnTrocar);
 
         Log.d("create", "onCreate");
 
@@ -32,7 +32,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        checaPrefs();
+        if (savedInstanceState != null) {
+            checaPrefs();
+        } else {
+            this.clearPref();
+        }
     }
 
     @Override
@@ -54,4 +58,10 @@ public class MainActivity extends AppCompatActivity {
             this.label.setText("Oi!");
         }
     }
+
+    void clearPref() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.edit().remove("nome").apply();
+    }
+
 }
